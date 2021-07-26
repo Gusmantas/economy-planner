@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import './Variables.module.scss';
+
+nav{
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid grey;
+  
+  h1{
+    margin: 0;
+    font-size: 2.5em;
+    user-select: none;
+    font-family: 'Bad Script', cursive;
+    color: $textColor;
+  }
+
+ .logOutIcon, .menuIcon{
+  font-size: 40px;
+  margin: 20px 10px 0 10px;
+  color: $primaryColor;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+
+  &:hover{
+    color: $textColor;
+  }
+}
+}
+
