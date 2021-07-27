@@ -1,15 +1,27 @@
 {
-  "name": "server",
+  "name": "economy-planner",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.12",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gusmantas/economy-planner.git"
+  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mysql": "^2.18.1"
-  }
+  "bugs": {
+    "url": "https://github.com/Gusmantas/economy-planner/issues"
+  },
+  "homepage": "https://github.com/Gusmantas/economy-planner#readme"
 }
