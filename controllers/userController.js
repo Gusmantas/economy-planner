@@ -2,7 +2,7 @@ const { Pool } = require("pg");
 const Encrypt = require("../Encrypt")
 
 const pool = new Pool({
-  connectionString: "postgres://tufzhevujdtvwe:d109a5390497c7282494981635284e64394c757b56508fdd87fa2290be2929cd@ec2-54-228-99-58.eu-west-1.compute.amazonaws.com:5432/deg5be2p566aa",
+  connectionString: "SECRET-STRING-HERE",
   ssl: {
     rejectUnauthorized: false
   }
