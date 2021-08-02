@@ -2,7 +2,7 @@ const { Pool } = require("pg");
 const Encrypt = require("../Encrypt")
 
 const pool = new Pool({
-  connectionString: "postgres://tufzhevujdtvwe:d109a5390497c7282494981635284e64394c757b56508fdd87fa2290be2929cd@ec2-54-228-99-58.eu-west-1.compute.amazonaws.com:5432/deg5be2p566aa",
+  connectionString: "YOUR-DATABASE-URL",
   ssl: {
     rejectUnauthorized: false
   }
@@ -24,7 +24,7 @@ const login = (req, res) => {
     user = user.rows[0]
 
     if (!user) {
-      res.status(401).json({ error: "Bad credentials" })
+      res.status(401).json({ error: "email not found" })
       return
     }
 
@@ -32,10 +32,10 @@ const login = (req, res) => {
     if (user.password === req.body.password) {
       delete user.password;
       req.session.user = user
-      res.json({ success: "Logged in successfully", loggedInUser: user });
+      res.json({ loggedInUser: user });
       return
     } else {
-      res.status(401).json({ error: "Bad credentials" });
+      res.status(401).json({ error: "bad credentials" });
       return
     }
   });

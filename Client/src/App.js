@@ -1,9 +1,13 @@
-import './App.scss';
-import Home from './pages/Home'
+import "./App.scss";
+import Home from "./pages/Home";
+import UserProvider from "./contexts/userProvider";
+
 function App() {
   return (
     <div className="App">
-      <Home />
+      <UserProvider>
+        <Home />
+      </UserProvider>
     </div>
   );
 }
