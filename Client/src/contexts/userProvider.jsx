@@ -6,6 +6,7 @@ const UserProvider = (props) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
+ 
 
   const logIn = async (credentials) => {
     let result = await fetch("/api/login", {
@@ -34,10 +35,23 @@ const UserProvider = (props) => {
     }
   };
 
+  const register = async (credentials) => {
+    let result = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    });
+    result = await result.json();
+    return result.error ? result.error : null;
+  }
+
   const values = {
     user,
     logIn,
     logOut,
+    register
   };
   return (
     <UserContext.Provider value={values}>{props.children}</UserContext.Provider>

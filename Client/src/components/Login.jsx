@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/userProvider";
 import { wrapper, errorText } from "../styles/LoginPage.module.scss";
 
-const Login = () => {
+const Login = (props) => {
   const { logIn } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     let credentials = {
       email,
@@ -19,20 +19,23 @@ const Login = () => {
     switch (result) {
       case "email not found":
         setError("Register an account to log in.");
-        break
+        break;
       case "bad credentials":
         setError("Bad Credentials. Check your spelling.");
-        break
+        break;
       case null:
-        break
+        break;
       default:
-        console.log(result);
-        setError("There was an error, please try again.")
-        break
+        setError("There was an error, please try again.");
+        break;
     }
   };
+
+  const handleState = () => {
+    props.onChange("register")
+  }
   return (
-    <form onSubmit={handleSubmit} className={wrapper}>
+    <form onSubmit={handleLogin} className={wrapper}>
       <h3>Welcome! Please Log-in</h3>
       <input
         type="email"
@@ -44,8 +47,9 @@ const Login = () => {
         placeholder="Password"
         onChange={(event) => setPassword(event.target.value)}
       />
-      <p className={errorText}>{error}</p>
       <button type="submit">Login</button>
+      <p className={errorText}>{error}</p>
+      <p onClick={handleState}>Don't have an account yet? Register here!</p>
     </form>
   );
 };

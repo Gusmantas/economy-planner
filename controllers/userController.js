@@ -2,7 +2,7 @@ const { Pool } = require("pg");
 const Encrypt = require("../Encrypt")
 
 const pool = new Pool({
-  connectionString: "YOUR-DATABASE-URL",
+  connectionString: "DATABASE-SECRET-HERE",
   ssl: {
     rejectUnauthorized: false
   }
@@ -48,10 +48,10 @@ const registerUser = (req, res) => {
   userToRegister.password = Encrypt.encrypt(userToRegister.password)
   pool.query(`INSERT INTO users(email, password)VALUES($1,$2)`, [userToRegister.email, userToRegister.password], (err, result) => {
     if (err) {
-      res.status(400).json({ error: "Email already registered" });
+      res.status(400).json({ error: "account already exists" });
       return
     }
-    res.json({ success: "User registered successfully", lastID: this.lastID });
+    res.json({ success: "user registered", lastID: this.lastID });
   });
 }
 
