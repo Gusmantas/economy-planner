@@ -1,13 +1,18 @@
-import "./App.scss";
 import Home from "./pages/Home";
-import UserProvider from "./contexts/userProvider";
+import UserProvider from "./contexts/UserProvider";
+import MonthProvider from "./contexts/MonthProvider";
+import HistoryProvider from "./contexts/HistoryProvider";
 
 function App() {
   return (
     <div className="App">
-      <UserProvider>
-        <Home />
-      </UserProvider>
+      <HistoryProvider>
+        <MonthProvider>
+          <UserProvider>
+            <Home />
+          </UserProvider>
+        </MonthProvider>
+      </HistoryProvider>
     </div>
   );
 }

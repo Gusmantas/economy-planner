@@ -1,34 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&family=Rock+Salt&display=swap");
 @import "./Variables.module.scss";
 
 nav {
-  margin: 10px;
+  // display: flex;
+  // justify-content: space-between;
+  // border-bottom: 5px solid black;
+  // background: $transparentBcgColor;
+  // width: 100%;
+  // height: 100px;
+  // z-index: 1;
+  z-index: 2;
+  height: 100%;
+  width: 0%;
+  position: fixed;
+  // z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: $transparentBcgColor;
+  transition: 0.5s ease-in-out;
+  overflow-x: hidden;
+  // padding-top: 20px;
   display: flex;
-  justify-content: space-between;
-  border-bottom: 3px solid grey;
+  flex-direction: column;
+  // align-items: center;
 
-  h1 {
-    margin: 0;
-    font-size: 2.5em;
-    user-select: none;
-    font-family: "Bad Script", cursive;
-    color: $textColor;
-  }
+  // h1 {
+  //   margin: 0;
+  //   font-size: 4em;
+  //   user-select: none;
+  //   font-family: "Rammetto One", cursive;
+  //   letter-spacing: 3px;
+  //   color: $primaryColor;
+  //   font-weight: bold;
+  //   position: absolute;
+  //   left: 50%;
+  //   transform: translate(-50%, 0);
+  // }
 
-  .logOutIcon,
-  .menuIcon {
+  .logOutIcon {
     font-size: 40px;
-    margin: 20px 10px 0 10px;
+    margin: 100px 20px 0 30px;
     color: $primaryColor;
-    transition: 0.4s ease-in-out;
     cursor: pointer;
 
     &:hover {
-      color: $textColor;
+      transition: 0.3s ease-in-out;
+      color: $secondaryColor;
     }
   }
 
-  .logOutIconHidden,.menuIconHidden{
-    visibility: hidden;
+  .logOutIconHidden {
+    display: none;
   }
+}
+
+.menuIcon {
+  z-index: 3;
+  font-size: 40px;
+  margin: 10px 20px 0 30px;
+  color: rgb(220, 20, 60);
+  cursor: pointer;
+  position: fixed;
+  // transition: 0.3s;
+  &:hover {
+    color: rgb(170, 62, 62);
+    // transition: 0.3s;
+  }
+}
+
+.menuIconHidden {
+  display: none;
 }

@@ -1,6 +1,8 @@
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
-import { UserContext } from "../contexts/userProvider";
-import { wrapper, errorText } from "../styles/LoginPage.module.scss";
+import { UserContext } from "../contexts/UserProvider";
+import { wrapper, errorText, buttons } from "../styles/LoginPage.module.scss";
 
 const Register = (props) => {
   const { register } = useContext(UserContext);
@@ -15,6 +17,10 @@ const Register = (props) => {
 
   const handleRegistration = async (e) => {
     e.preventDefault();
+    if (!password || !repeatedPassword || !email) {
+      setError("Fields cannot be empty!");
+      return;
+    }
     if (password !== repeatedPassword) {
       setError("Password do not match");
       return;
@@ -38,8 +44,9 @@ const Register = (props) => {
         break;
     }
 
-    if(!result){
-      handleState()
+    if (!result) {
+      alert("registration sucessfull!");
+      handleState();
     }
   };
 
@@ -61,8 +68,12 @@ const Register = (props) => {
         placeholder="Repeat Password"
         onChange={(event) => setRepeatedPassword(event.target.value)}
       />
-      <button type="submit">Submit</button>
-      <button onClick={handleState}>Return</button>
+      <div className={buttons}>
+        <button onClick={handleState}>
+          <FontAwesomeIcon icon={faArrowLeft} /> Back
+        </button>
+        <button type="submit">Submit</button>
+      </div>
       <p className={errorText}>{error}</p>
     </form>
   );

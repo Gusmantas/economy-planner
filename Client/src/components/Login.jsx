@@ -1,6 +1,10 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../contexts/userProvider";
-import { wrapper, errorText } from "../styles/LoginPage.module.scss";
+import { UserContext } from "../contexts/UserProvider";
+import {
+  wrapper,
+  errorText,
+  registerBtn,
+} from "../styles/LoginPage.module.scss";
 
 const Login = (props) => {
   const { logIn } = useContext(UserContext);
@@ -32,11 +36,11 @@ const Login = (props) => {
   };
 
   const handleState = () => {
-    props.onChange("register")
-  }
+    props.onChange("register");
+  };
   return (
     <form onSubmit={handleLogin} className={wrapper}>
-      <h3>Welcome! Please Log-in</h3>
+      <h3>Welcome! Please Sign-in:</h3>
       <input
         type="email"
         placeholder="Email"
@@ -47,9 +51,11 @@ const Login = (props) => {
         placeholder="Password"
         onChange={(event) => setPassword(event.target.value)}
       />
-      <button type="submit">Login</button>
+      <button type="submit">Submit</button>
       <p className={errorText}>{error}</p>
-      <p onClick={handleState}>Don't have an account yet? Register here!</p>
+      <p className={registerBtn} onClick={handleState}>
+        Don't have an account yet? Register here!
+      </p>
     </form>
   );
 };

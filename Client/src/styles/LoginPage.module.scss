@@ -1,18 +1,23 @@
 @import "./Variables.module.scss";
+@import "./Mixins.module.scss";
 
 .wrapper {
   display: flex;
   flex-direction: column;
   margin: 100px auto;
-  width: 30%;
-  height: 460px;
-  border: 3px solid grey;
-  border-radius: 5px;
-  
-  h3{
+  width: 25%;
+  height: 500px;
+  border-radius: 10px;
+  background-color: white;
+  background: $transparentBcgColor;
+
+  h3 {
     text-align: center;
-    color: $textColor;
+    color: $primaryColor;
     font-family: $secondaryTextFamily;
+    letter-spacing: 2px;
+    font-size: 25px;
+    user-select: none;
   }
 
   input {
@@ -20,38 +25,94 @@
     width: 50%;
     font-family: inherit;
     border: 0;
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid black;
     outline: 0;
     font-size: 1.2rem;
-    color: $textColor;
+    font-weight: 400px;
+    color: black;
     padding: 7px 0;
-    
+    background: none;
+
     &:focus {
       font-weight: 500;
-      border-image: linear-gradient(to right, $textColor,#38ef7d);
-      border-image-slice: 1;      
+      border-image: linear-gradient(to right, $primaryColor, #38ef7d);
+      border-image-slice: 1;
     }
 
     &::placeholder {
-      color: grey;
-      font-size: 0.8em;
+      color: black;
+      font-size: 0.89em;
       text-align: center;
       padding: 10px;
-      transition: 0.3s ease-in-out;
+      transition: 0.2s ease-in-out;
     }
-  
+
     &:focus::placeholder {
-      font-size: 0.9em;
+      color: $secondaryColor;
+      font-size: 0.92em;
       cursor: text;
       top: 20px;
-   
     }
+
+    &:-webkit-autofill,
+    :-webkit-autofill:hover,
+    :-webkit-autofill:focus {
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+
+  button {
+    @include primaryBtn;
+    width: 25%;
+    margin: 0 auto;
   }
 }
 
-.errorText{
+.errorText {
   text-align: center;
   color: red;
+  width: 50%;
+  margin: auto;
+  font-size: 1em;
+  font-weight: bold;
 }
 
+.registerBtn {
+  text-align: center;
+  text-decoration: underline;
+  line-height: 2px;
+  color: $primaryColor;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
 
+  &:hover {
+    color: $secondaryColor;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+
+  button {
+    margin: 0 20px;
+  }
+}
+
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// textarea:-webkit-autofill,
+// textarea:-webkit-autofill:hover,
+// textarea:-webkit-autofill:focus,
+// select:-webkit-autofill,
+// select:-webkit-autofill:hover,
+// select:-webkit-autofill:focus {
+//   border: none;
+//   -webkit-text-fill-color: none;
+//   -webkit-box-shadow: none;
+//   // transition: background-color 5000s ease-in-out 0s;
+// }
